@@ -561,6 +561,306 @@ footer{position:relative;z-index:1;text-align:center;padding:24px;
   color:var(--ink);outline:none;width:100%;transition:all .2s;resize:vertical}
 .cred-input-row input:focus,.cred-input-row textarea:focus{border-color:var(--pink2);background:var(--pink3)}
 
+
+/* ══════ HISTORY ══════ */
+.hist-btn{position:relative;cursor:pointer;background:var(--lav3);border:3px solid var(--ink);
+  border-radius:16px;padding:9px 18px;display:flex;align-items:center;gap:7px;
+  font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;color:var(--ink);
+  box-shadow:var(--shadow-sm);transition:all .15s}
+.hist-btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.hist-btn:active{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--ink)}
+#modalHistory .modal-box{max-width:600px}
+.hist-filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.hist-filter{padding:6px 16px;border-radius:999px;border:2.5px solid var(--ink);cursor:pointer;
+  font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;background:white;color:var(--ink2);
+  box-shadow:2px 2px 0 var(--ink);transition:all .15s}
+.hist-filter:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+.hist-filter.active{background:var(--ink);color:white}
+.hist-search{display:flex;align-items:center;gap:8px;background:white;border:2.5px solid var(--ink);
+  border-radius:999px;padding:8px 16px;margin-bottom:16px;box-shadow:2px 2px 0 var(--ink)}
+.hist-search input{flex:1;border:none;background:transparent;outline:none;
+  font-family:'Nunito',sans-serif;font-size:13px;font-weight:600;color:var(--ink)}
+.hist-search input::placeholder{color:var(--muted)}
+.hist-list{display:flex;flex-direction:column;gap:12px;max-height:52vh;overflow-y:auto;padding-right:4px}
+.hist-list::-webkit-scrollbar{width:5px}
+.hist-list::-webkit-scrollbar-thumb{background:var(--lav);border-radius:99px}
+.hist-card{background:white;border:2.5px solid var(--ink);border-radius:18px;
+  overflow:hidden;box-shadow:3px 3px 0 var(--ink);transition:box-shadow .15s,transform .15s}
+.hist-card:hover{transform:translate(-1px,-2px);box-shadow:4px 5px 0 var(--ink)}
+.hist-card-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:10px;flex-wrap:wrap}
+.hist-order-id{font-family:'Fredoka One',cursive;font-size:13px;color:var(--ink)}
+.hist-date{font-size:11px;font-weight:700;color:var(--muted)}
+.hist-total{font-family:'Fredoka One',cursive;font-size:18px;color:var(--pink2);flex-shrink:0}
+.hist-status{padding:3px 10px;border-radius:999px;font-size:10px;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;border:2px solid var(--ink)}
+.hist-status.sukses{background:var(--mint3);color:var(--mint2)}
+.hist-card-body{border-top:2px dashed rgba(44,33,67,.12);padding:10px 16px;display:none;flex-direction:column;gap:8px}
+.hist-card.expanded .hist-card-body{display:flex}
+.hist-item-row{display:flex;align-items:center;gap:10px}
+.hist-item-icon{width:32px;height:32px;border-radius:9px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:16px;border:2px solid var(--ink)}
+.hist-item-info{flex:1;min-width:0}
+.hist-item-name{font-family:'Fredoka One',cursive;font-size:13px;line-height:1.2}
+.hist-item-var{font-size:11px;font-weight:700;color:var(--muted)}
+.hist-item-price{font-family:'Fredoka One',cursive;font-size:14px;flex-shrink:0}
+.hist-card-footer{padding:6px 16px 12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.hist-buyer{font-size:11px;font-weight:700;color:var(--muted);display:flex;align-items:center;gap:5px}
+.hist-expand-btn{font-size:11px;font-weight:800;color:var(--ink2);cursor:pointer;
+  padding:4px 12px;border-radius:8px;border:2px solid var(--ink);background:var(--cream);
+  box-shadow:2px 2px 0 var(--ink);transition:all .15s;white-space:nowrap}
+.hist-expand-btn:hover{background:var(--lav3)}
+.hist-empty{text-align:center;padding:50px 20px;color:var(--muted)}
+.hist-empty-icon{font-size:52px;margin-bottom:12px;animation:float 3s ease-in-out infinite}
+.hist-empty p{font-size:14px;font-weight:700}.hist-empty small{font-size:12px;font-weight:600;margin-top:4px;display:block}
+.hist-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.hist-stat-chip{background:white;border:2.5px solid var(--ink);border-radius:14px;
+  padding:10px;text-align:center;box-shadow:2px 2px 0 var(--ink)}
+.hist-stat-num{font-family:'Fredoka One',cursive;font-size:22px;color:var(--pink2)}
+.hist-stat-lbl{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.hist-del-btn{padding:4px 10px;border-radius:8px;border:2px solid rgba(200,50,50,.3);
+  background:rgba(200,50,50,.08);color:#c0392b;font-size:11px;font-weight:800;cursor:pointer;transition:all .15s}
+.hist-del-btn:hover{background:rgba(200,50,50,.2)}
+
+
+/* ══════════════════════════════════════════
+   MOBILE / ANDROID RESPONSIVE
+══════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════
+   MOBILE / ANDROID RESPONSIVE
+══════════════════════════════════════════ */
+
+/* ── Prevent iOS/Android tap highlight & font boost ── */
+* { -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* ── HAMBURGER BUTTON ── */
+.hamburger {
+  display: none;
+  width: 44px; height: 44px; border-radius: 14px; cursor: pointer;
+  background: var(--lav3); border: 3px solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+  flex-shrink: 0; transition: all .15s;
+}
+.hamburger:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+.hamburger.open { background: var(--ink); }
+.ham-line {
+  width: 18px; height: 2.5px; border-radius: 99px;
+  background: var(--ink); transition: all .25s;
+}
+.hamburger.open .ham-line { background: white; }
+.hamburger.open .ham-line:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.open .ham-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open .ham-line:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+/* ── DROPDOWN MENU ── */
+.dropdown-menu {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 99;
+  pointer-events: none;
+}
+.dropdown-overlay {
+  position: absolute; inset: 0;
+  background: rgba(44,33,67,.35);
+  opacity: 0; transition: opacity .25s;
+  backdrop-filter: blur(3px);
+}
+.dropdown-menu.open .dropdown-overlay { opacity: 1; pointer-events: all; }
+
+.dropdown-panel {
+  position: absolute; top: 68px; right: 14px;
+  width: 240px;
+  background: var(--cream2);
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  padding: 10px;
+  box-shadow: var(--shadow-lg);
+  transform: scale(.85) translateY(-16px);
+  transform-origin: top right;
+  opacity: 0;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), opacity .25s;
+  pointer-events: none;
+}
+.dropdown-menu.open .dropdown-panel {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.dd-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: 14px; cursor: pointer;
+  font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 800;
+  color: var(--ink); transition: background .15s;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+.dd-item:active { background: var(--lav3); }
+.dd-item.active { background: var(--pink3); color: var(--pink2); }
+.dd-item .dd-icon { font-size: 20px; width: 32px; text-align: center; flex-shrink: 0; }
+.dd-item .dd-label { flex: 1; }
+.dd-item .dd-badge {
+  background: var(--pink2); color: white; border: 2px solid var(--ink);
+  border-radius: 999px; font-size: 10px; font-weight: 900;
+  padding: 1px 7px; min-width: 20px; text-align: center;
+  display: none;
+}
+.dd-item .dd-badge.show { display: inline-block; }
+.dd-divider {
+  height: 2px; background: rgba(44,33,67,.08);
+  border-radius: 99px; margin: 6px 4px;
+}
+
+/* ── MOBILE: modals slide up from bottom ── */
+@media (max-width: 600px) {
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal-box {
+    border-radius: 26px 26px 0 0;
+    max-width: 100%;
+    max-height: 92vh;
+    padding: 24px 20px;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    transform: translateY(100%);
+  }
+  .modal-overlay.open .modal-box { transform: translateY(0); }
+  .modal-box::before {
+    content: '';
+    display: block;
+    width: 40px; height: 4px;
+    background: var(--muted);
+    border-radius: 99px;
+    margin: 0 auto 20px;
+    opacity: .35;
+  }
+  .modal-close { top: 18px; right: 18px; }
+  #modalHistory .modal-box { max-width: 100%; }
+  .dropdown-panel { top: 62px; right: 12px; width: 220px; }
+}
+
+@media (max-width: 700px) {
+  /* ── NAV ── */
+  nav { padding: 0 16px; height: 58px; }
+  .nav-pills { display: none; }
+  .nav-logo { font-size: 20px; }
+  .logo-pill { font-size: 12px; padding: 2px 8px; }
+  .nav-right { gap: 8px; }
+  .btn-admin { display: none; }
+  .hist-btn { display: none; }
+  .cart-btn { display: none; }
+  .hamburger { display: flex; }
+
+  /* ── HERO ── */
+  .hero { padding: 40px 16px 30px; }
+  .hero h1 { font-size: clamp(36px, 11vw, 56px); }
+  .hero-sub { font-size: 13px; }
+  .hero-chips { gap: 8px; }
+  .chip { padding: 8px 14px; }
+  .chip-num { font-size: 22px; }
+
+  /* ── SEARCH ── */
+  .search-wrap { padding: 0 14px 28px; }
+  .search-box { padding: 9px 16px; }
+
+  /* ── TABS ── */
+  .tabs { padding: 0 14px 24px; gap: 6px; overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { padding: 7px 16px; font-size: 11px; white-space: nowrap; flex-shrink: 0; }
+
+  /* ── GRID: 1 column on phone ── */
+  .grid { grid-template-columns: 1fr; padding: 0 14px 40px; gap: 16px; }
+
+  /* ── CARD ── */
+  .pcard:hover { transform: none; box-shadow: var(--shadow-lg); }
+  .pcard-top { padding: 20px 18px 28px; }
+  .pcard-app-icon { width: 54px; height: 54px; font-size: 26px; }
+  .pcard-name { font-size: 20px; }
+  .pcard-bot { padding: 14px 18px 18px; }
+  .var-price { font-size: 16px; }
+
+  /* ── CARD ACTIONS: full width buttons ── */
+  .card-actions { grid-template-columns: 1fr; }
+  .btn-order, .btn-cart { padding: 14px; font-size: 15px; min-height: 48px; }
+
+  /* ── ADMIN ── */
+  .admin-wrap { padding: 0 14px; margin-bottom: 30px; }
+  .admin-card { padding: 20px 16px; border-radius: 20px; }
+  .admin-labels { display: none; }
+  .prod-admin-header { grid-template-columns: 44px 1fr 36px; gap: 8px; }
+  .prod-admin-header select, .prod-admin-header > div:nth-child(4) { display: none; }
+  .var-row { grid-template-columns: 1fr 80px 30px; }
+  .cred-input-row { grid-template-columns: 1fr; }
+
+  /* ── FEATURES PAGE ── */
+  .page-hero { padding: 40px 16px 36px; }
+  .page-hero h2 { font-size: clamp(28px, 8vw, 48px); }
+  .keunggulan-grid, .garansi-grid, .testi-grid { grid-template-columns: 1fr; }
+  .steps-wrap { gap: 10px; }
+  .step-item { padding: 14px 16px; gap: 12px; }
+
+  /* ── CONTACT PAGE ── */
+  .contact-wrap { grid-template-columns: 1fr; max-width: 100%; }
+  .contact-card { padding: 22px 18px; }
+
+  /* ── CART DRAWER ── */
+  .cart-drawer { width: 100vw; border-radius: 26px 26px 0 0; border-left: none; border-top: 3px solid var(--ink); box-shadow: 0 -6px 0 var(--ink); transform: translateY(100%) !important; }
+  .cart-drawer.open { transform: translateY(0) !important; }
+  .cart-head { border-radius: 26px 26px 0 0; padding-bottom: 16px; }
+  .cart-head::before { content: ''; display: block; width: 40px; height: 4px; background: var(--muted); border-radius: 99px; margin: 0 auto 16px; opacity: .3; }
+  .cart-items { padding: 14px 18px; }
+  .cart-foot { padding: 14px 18px calc(14px + env(safe-area-inset-bottom, 0px)); }
+
+  /* ── HISTORY MODAL ── */
+  .hist-stats { grid-template-columns: repeat(3,1fr); gap: 8px; }
+  .hist-stat-num { font-size: 18px; }
+  .hist-list { max-height: 44vh; }
+
+  /* ── MODALS: full padding & touch-friendly ── */
+  .modal-title { font-size: 20px; }
+  .modal-sub { font-size: 12px; margin-bottom: 16px; }
+  .form-input { font-size: 16px; padding: 13px 14px; }
+  .btn-big { padding: 16px; font-size: 16px; min-height: 54px; }
+  .pay-method { padding: 14px; min-height: 64px; }
+  .pay-method-icon { width: 40px; height: 40px; font-size: 22px; }
+
+  /* ── FOOTER ── */
+  footer { padding: 20px 16px; font-size: 12px; }
+
+  /* ── PAGE sections ── */
+  .page { padding: 0 14px 40px; }
+}
+
+/* ── Very small phones (< 380px) ── */
+@media (max-width: 380px) {
+  .hero h1 { font-size: 32px; }
+  .chip-num { font-size: 18px; }
+  nav { height: 54px; }
+  .nav-logo { font-size: 18px; }
+  .hist-stats { grid-template-columns: 1fr 1fr; }
+  .hist-stats .hist-stat-chip:last-child { grid-column: 1/-1; }
+}
+
+/* ── Tablet (701px – 1024px): 2-col grid ── */
+@media (min-width: 701px) and (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(2, 1fr); padding: 0 20px 60px; gap: 20px; }
+  nav { padding: 0 24px; }
+  .hero { padding: 56px 32px 40px; }
+  .tabs { padding: 0 16px 32px; }
+}
+
+/* ── Touch device: disable hover states that feel laggy ── */
+@media (hover: none) {
+  .pcard:hover { transform: none !important; box-shadow: var(--shadow-lg) !important; }
+  .var-item:hover { transform: none !important; box-shadow: 3px 3px 0 var(--ink) !important; background: var(--cream) !important; }
+  .btn-order:hover, .btn-cart:hover, .btn-big:hover, .a-btn:hover,
+  .cart-btn:hover, .hist-btn:hover, .tab:hover, .chip:hover,
+  .hist-card:hover { transform: none !important; box-shadow: inherit !important; background: inherit !important; }
+  .btn-order:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+  .btn-cart:active  { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+  .btn-big:active   { transform: translate(2px,2px) !important; box-shadow: 2px 2px 0 var(--ink) !important; }
+  .var-item:active  { transform: translate(2px,2px) !important; box-shadow: 0 0 0 var(--ink) !important; }
+}
+
 </style>
 </head>
 <body>
@@ -570,6 +870,41 @@ footer{position:relative;z-index:1;text-align:center;padding:24px;
   <div class="blob" style="width:220px;height:220px;background:rgba(201,184,255,.16);top:35%;right:-50px;--dur:11s"></div>
   <div class="blob" style="width:260px;height:260px;background:rgba(168,230,207,.14);bottom:12%;left:4%;--dur:7s"></div>
   <div class="blob" style="width:170px;height:170px;background:rgba(255,224,102,.18);top:58%;right:18%;--dur:10s"></div>
+</div>
+
+<!-- DROPDOWN MENU -->
+<div class="dropdown-menu" id="dropdownMenu">
+  <div class="dropdown-overlay" onclick="closeDropdown()"></div>
+  <div class="dropdown-panel" id="dropdownPanel">
+    <div class="dd-item active" id="dd-pricing" onclick="ddNav('pricing')">
+      <span class="dd-icon">🏷️</span>
+      <span class="dd-label">Pricing</span>
+    </div>
+    <div class="dd-item" id="dd-features" onclick="ddNav('features')">
+      <span class="dd-icon">⭐</span>
+      <span class="dd-label">Features</span>
+    </div>
+    <div class="dd-item" id="dd-contact" onclick="ddNav('contact')">
+      <span class="dd-icon">💌</span>
+      <span class="dd-label">Contact</span>
+    </div>
+    <div class="dd-divider"></div>
+    <div class="dd-item" id="dd-cart" onclick="ddOpenCart()">
+      <span class="dd-icon">🛒</span>
+      <span class="dd-label">Keranjang</span>
+      <span class="dd-badge" id="ddCartBadge"></span>
+    </div>
+    <div class="dd-item" id="dd-history" onclick="ddOpenHistory()">
+      <span class="dd-icon">📋</span>
+      <span class="dd-label">History</span>
+      <span class="dd-badge" id="ddHistBadge"></span>
+    </div>
+    <div class="dd-divider"></div>
+    <div class="dd-item" id="dd-admin" onclick="ddToggleAdmin()">
+      <span class="dd-icon">⚙️</span>
+      <span class="dd-label">Admin Panel</span>
+    </div>
+  </div>
 </div>
 
 <!-- NAV -->
@@ -582,9 +917,16 @@ footer{position:relative;z-index:1;text-align:center;padding:24px;
   </div>
   <div class="nav-right">
     <button class="btn-admin" id="btnAdmin" onclick="toggleAdmin()">⚙ Admin</button>
+    <div class="hist-btn" onclick="openHistory()">📋 <span id="histLabel">History</span></div>
     <div class="cart-btn" onclick="openCart()">
       🛒 <span id="cartLabel">Cart</span>
       <div class="cart-count" id="cartCount">0</div>
+    </div>
+    <!-- Hamburger (mobile only) -->
+    <div class="hamburger" id="hamburgerBtn" onclick="toggleDropdown()">
+      <div class="ham-line"></div>
+      <div class="ham-line"></div>
+      <div class="ham-line"></div>
     </div>
   </div>
 </nav>
@@ -1009,23 +1351,122 @@ footer{position:relative;z-index:1;text-align:center;padding:24px;
   </div>
 </div>
 
+<!-- ═══ MODAL: HISTORY ═══ -->
+<div class="modal-overlay" id="modalHistory">
+  <div class="modal-box">
+    <div class="modal-close" onclick="closeModal('modalHistory')">✕</div>
+    <div class="modal-title">📋 History Pembelian</div>
+    <div class="modal-sub" id="histModalSub">Semua transaksi tersimpan di perangkat ini.</div>
+
+    <!-- Stats -->
+    <div class="hist-stats">
+      <div class="hist-stat-chip">
+        <div class="hist-stat-num" id="hStatTotal">0</div>
+        <div class="hist-stat-lbl">Transaksi</div>
+      </div>
+      <div class="hist-stat-chip">
+        <div class="hist-stat-num" id="hStatSpend">Rp0</div>
+        <div class="hist-stat-lbl">Total Belanja</div>
+      </div>
+      <div class="hist-stat-chip">
+        <div class="hist-stat-num" id="hStatItems">0</div>
+        <div class="hist-stat-lbl">Item Dibeli</div>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="hist-search">
+      <span>🔍</span>
+      <input type="text" id="histSearchInput" placeholder="Cari order ID, produk, nama..." oninput="renderHistory()">
+    </div>
+
+    <!-- Filter -->
+    <div class="hist-filter-bar">
+      <div class="hist-filter active" onclick="setHistFilter('semua',this)">Semua</div>
+      <div class="hist-filter" onclick="setHistFilter('7d',this)">7 Hari</div>
+      <div class="hist-filter" onclick="setHistFilter('30d',this)">30 Hari</div>
+      <div class="hist-filter" onclick="setHistFilter('bulan',this)">Bulan Ini</div>
+    </div>
+
+    <!-- List -->
+    <div class="hist-list" id="histList">
+      <div class="hist-empty">
+        <div class="hist-empty-icon">📭</div>
+        <p>Belum ada history</p>
+        <small>Selesaikan pembelian untuk melihat riwayat di sini!</small>
+      </div>
+    </div>
+
+    <!-- Clear all -->
+    <div style="margin-top:14px;text-align:center">
+      <button class="hist-del-btn" onclick="clearAllHistory()" style="font-size:12px;padding:7px 18px">
+        🗑️ Hapus Semua History
+      </button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <footer>© 2025 NaiyaCart 🍭 · Premium Account Store · Diperbarui: <span id="lastSave">—</span></footer>
 
 <script>
+/* ── DROPDOWN MENU ── */
+let dropdownOpen = false;
+
+function toggleDropdown() {
+  dropdownOpen = !dropdownOpen;
+  document.getElementById('dropdownMenu').classList.toggle('open', dropdownOpen);
+  document.getElementById('hamburgerBtn').classList.toggle('open', dropdownOpen);
+}
+function closeDropdown() {
+  dropdownOpen = false;
+  document.getElementById('dropdownMenu').classList.remove('open');
+  document.getElementById('hamburgerBtn').classList.remove('open');
+}
+function ddNav(page) {
+  closeDropdown();
+  showPage(page);
+  // update active state in dropdown
+  document.querySelectorAll('.dd-item[id^="dd-"]').forEach(el => el.classList.remove('active'));
+  const el = document.getElementById('dd-' + page);
+  if(el) el.classList.add('active');
+}
+function ddOpenCart() { closeDropdown(); openCart(); }
+function ddOpenHistory() { closeDropdown(); openHistory(); }
+function ddToggleAdmin() {
+  closeDropdown();
+  // scroll to admin area then toggle
+  showPage('pricing');
+  setTimeout(() => {
+    toggleAdmin();
+    const wrap = document.getElementById('adminWrap');
+    if(wrap) wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+function syncDropdownBadges(cartN, histN) {
+  // Cart badge in dropdown
+  const cb = document.getElementById('ddCartBadge');
+  if(cb){ cb.textContent = cartN > 0 ? cartN : ''; cb.classList.toggle('show', cartN > 0); }
+  // Hist badge in dropdown
+  const hb = document.getElementById('ddHistBadge');
+  if(hb){ hb.textContent = histN > 0 ? histN : ''; hb.classList.toggle('show', histN > 0); }
+}
+
 /* ── PAGE SWITCHING ── */
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-pill').forEach(b => b.classList.remove('active'));
-
   const page = document.getElementById('page-' + name);
-  if (page) page.classList.add('active');
-
+  if(page) page.classList.add('active');
   const pills = document.querySelectorAll('.nav-pill');
   const idx = ['pricing','features','contact'].indexOf(name);
-  if (pills[idx]) pills[idx].classList.add('active');
-
+  if(pills[idx]) pills[idx].classList.add('active');
+  // sync dropdown active
+  document.querySelectorAll('.dd-item[id^="dd-"]').forEach(el => el.classList.remove('active'));
+  const ddEl = document.getElementById('dd-' + name);
+  if(ddEl) ddEl.classList.add('active');
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 /* ── SEED DATA ── */
@@ -1574,7 +2015,172 @@ function deductStock(cartItems) {
   localStorage.setItem('as_v3', JSON.stringify(state));
 }
 
+/* ══════════════════════════════════════════
+   HISTORY
+══════════════════════════════════════════ */
+const HIST_KEY = 'nc_history_v1';
+let histFilter = 'semua';
+
+function loadHistory() {
+  try { return JSON.parse(localStorage.getItem(HIST_KEY) || '[]'); }
+  catch(e) { return []; }
+}
+function saveHistoryRecord(record) {
+  const hist = loadHistory();
+  hist.unshift(record); // newest first
+  localStorage.setItem(HIST_KEY, JSON.stringify(hist.slice(0, 200))); // max 200
+  updateHistBtn(hist.length);
+}
+function updateHistBtn(count) {
+  const n = count ?? loadHistory().length;
+  document.getElementById('histLabel').textContent = n > 0 ? `History (${n})` : 'History';
+  // sync dropdown badge
+  const cartN = cart.reduce((s,c)=>s+c.qty,0);
+  syncDropdownBadges(cartN, n);
+}
+function openHistory() {
+  renderHistory();
+  openModal('modalHistory');
+}
+function setHistFilter(f, el) {
+  histFilter = f;
+  document.querySelectorAll('.hist-filter').forEach(b => b.classList.remove('active'));
+  if(el) el.classList.add('active');
+  renderHistory();
+}
+function renderHistory() {
+  const raw   = loadHistory();
+  const q     = (document.getElementById('histSearchInput')?.value || '').toLowerCase().trim();
+  const now   = Date.now();
+
+  // Filter by time
+  let list = raw.filter(r => {
+    if(histFilter === '7d')   return now - r.ts < 7  * 86400000;
+    if(histFilter === '30d')  return now - r.ts < 30 * 86400000;
+    if(histFilter === 'bulan'){
+      const d = new Date(r.ts), t = new Date();
+      return d.getMonth() === t.getMonth() && d.getFullYear() === t.getFullYear();
+    }
+    return true;
+  });
+
+  // Filter by search
+  if(q) list = list.filter(r =>
+    r.orderId.toLowerCase().includes(q) ||
+    r.buyerName.toLowerCase().includes(q) ||
+    r.buyerWa.includes(q) ||
+    r.items.some(i => i.prodName.toLowerCase().includes(q) || i.varName.toLowerCase().includes(q))
+  );
+
+  // Stats (use raw for all-time)
+  const totalSpend = raw.reduce((s, r) => s + r.total, 0);
+  const totalItems = raw.reduce((s, r) => s + r.items.reduce((ss, i) => ss + i.qty, 0), 0);
+  document.getElementById('hStatTotal').textContent  = raw.length;
+  document.getElementById('hStatSpend').textContent  = fmtShort(totalSpend);
+  document.getElementById('hStatItems').textContent  = totalItems;
+  document.getElementById('histModalSub').textContent =
+    raw.length > 0 ? `${raw.length} transaksi · Total belanja ${fmt(totalSpend)}` : 'Semua transaksi tersimpan di perangkat ini.';
+
+  const el = document.getElementById('histList');
+  if(!list.length) {
+    el.innerHTML = `<div class="hist-empty">
+      <div class="hist-empty-icon">${q || histFilter !== 'semua' ? '🔍' : '📭'}</div>
+      <p>${q || histFilter !== 'semua' ? 'Tidak ada hasil' : 'Belum ada history'}</p>
+      <small>${q || histFilter !== 'semua' ? 'Coba kata kunci atau filter lain.' : 'Selesaikan pembelian untuk melihat riwayat di sini!'}</small>
+    </div>`;
+    return;
+  }
+
+  el.innerHTML = list.map((r, idx) => {
+    const date = new Date(r.ts).toLocaleString('id-ID', {
+      day:'2-digit', month:'short', year:'numeric',
+      hour:'2-digit', minute:'2-digit'
+    });
+    const itemsHTML = r.items.map(i => `
+      <div class="hist-item-row">
+        <div class="hist-item-icon" style="background:${i.icon_bg||'var(--cream)'}">${i.emoji}</div>
+        <div class="hist-item-info">
+          <div class="hist-item-name">${i.prodName}</div>
+          <div class="hist-item-var">${i.varName} × ${i.qty}</div>
+        </div>
+        <div class="hist-item-price">${fmt(i.price * i.qty)}</div>
+      </div>`).join('');
+
+    return `
+    <div class="hist-card" id="hcard-${idx}">
+      <div class="hist-card-head">
+        <div class="hist-card-head-left" style="flex-direction:column;align-items:flex-start;gap:2px">
+          <div class="hist-order-id">#${r.orderId}</div>
+          <div class="hist-date">🕐 ${date}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+          <div class="hist-status sukses">✅ Sukses</div>
+          <div class="hist-total">${fmt(r.total)}</div>
+        </div>
+      </div>
+      <div class="hist-card-body" id="hbody-${idx}">${itemsHTML}</div>
+      <div class="hist-card-footer">
+        <div class="hist-buyer">👤 ${r.buyerName} · 📱 ${r.buyerWa} · 💳 ${r.payMethod}</div>
+        <div style="display:flex;gap:6px">
+          <div class="hist-del-btn" onclick="deleteHistory('${r.orderId}')">🗑</div>
+          <div class="hist-expand-btn" onclick="toggleHistCard(${idx})" id="hexp-${idx}">▼ Detail</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleHistCard(idx) {
+  const card = document.getElementById('hcard-' + idx);
+  const btn  = document.getElementById('hexp-' + idx);
+  if(!card) return;
+  const expanded = card.classList.toggle('expanded');
+  if(btn) btn.textContent = expanded ? '▲ Tutup' : '▼ Detail';
+}
+
+function deleteHistory(orderId) {
+  if(!confirm('Hapus record ini?')) return;
+  let hist = loadHistory().filter(r => r.orderId !== orderId);
+  localStorage.setItem(HIST_KEY, JSON.stringify(hist));
+  updateHistBtn(hist.length);
+  renderHistory();
+  toast('🗑 Record dihapus');
+}
+function clearAllHistory() {
+  if(!confirm('Hapus SEMUA history? Tidak bisa dikembalikan!')) return;
+  localStorage.removeItem(HIST_KEY);
+  updateHistBtn(0);
+  renderHistory();
+  toast('🗑 Semua history dihapus');
+}
+
+function fmtShort(n) {
+  if(n >= 1000000) return 'Rp' + (n/1000000).toFixed(1) + 'jt';
+  if(n >= 1000)    return 'Rp' + (n/1000).toFixed(0) + 'rb';
+  return 'Rp' + n;
+}
+
 function doneOrder() {
+  // Save to history
+  const payLabels = { qris:'QRIS', ewallet:'GoPay/OVO/DANA', bank:'Transfer Bank' };
+  saveHistoryRecord({
+    orderId:   orderSession.orderId,
+    ts:        Date.now(),
+    buyerName: orderSession.buyerName,
+    buyerWa:   orderSession.buyerWa,
+    buyerEmail:orderSession.buyerEmail,
+    payMethod: payLabels[selectedPayMethod] || selectedPayMethod,
+    total:     orderSession.total,
+    items: orderSession.cart.map(c => ({
+      prodName: c.prodName,
+      emoji:    c.emoji,
+      icon_bg:  c.icon_bg,
+      varName:  c.varName,
+      price:    c.price,
+      qty:      c.qty,
+    }))
+  });
+
   cart = [];
   updateCartUI();
   renderCartDrawer();
@@ -1598,6 +2204,8 @@ function updateCartUI(){
   const el=document.getElementById('cartCount');
   el.textContent=n; el.classList.toggle('show',n>0);
   document.getElementById('cartLabel').textContent=n>0?`Cart (${n})`:'Cart';
+  // sync dropdown badge
+  syncDropdownBadges(n, loadHistory().length);
 }
 function renderCartDrawer(){
   const el=document.getElementById('cartItems');
@@ -1627,8 +2235,35 @@ function renderCartDrawer(){
   document.getElementById('cartItemCount').textContent=`(${cart.reduce((s,c)=>s+c.qty,0)} item)`;
   foot.style.display='block';
 }
-function openCart(){ document.getElementById('cartOverlay').classList.add('open'); document.getElementById('cartDrawer').classList.add('open'); renderCartDrawer(); document.body.style.overflow='hidden'; }
-function closeCart(){ document.getElementById('cartOverlay').classList.remove('open'); document.getElementById('cartDrawer').classList.remove('open'); document.body.style.overflow=''; }
+function openCart(){
+  const drawer = document.getElementById('cartDrawer');
+  const overlay = document.getElementById('cartOverlay');
+  // On mobile: bottom sheet (translateY), on desktop: slide from right
+  if(window.innerWidth <= 700){
+    drawer.style.transform = 'translateY(100%)';
+    drawer.style.top = 'auto';
+    drawer.style.bottom = '0';
+    drawer.style.right = '0';
+    drawer.style.left = '0';
+    drawer.style.width = '100%';
+  } else {
+    drawer.style.transform = '';
+    drawer.style.top = '';
+    drawer.style.bottom = '';
+    drawer.style.right = '';
+    drawer.style.left = '';
+    drawer.style.width = '';
+  }
+  overlay.classList.add('open');
+  drawer.classList.add('open');
+  renderCartDrawer();
+  document.body.style.overflow='hidden';
+}
+function closeCart(){
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.body.style.overflow='';
+}
 
 /* ── ADMIN ── */
 function toggleAdmin(){
@@ -1722,6 +2357,7 @@ function saveData(){
 /* ── INIT ── */
 renderTabs(); renderGrid();
 if(localStorage.getItem('as_v3')) document.getElementById('lastSave').textContent='Dari penyimpanan lokal';
+updateHistBtn();
 </script>
 </body>
 </html>
